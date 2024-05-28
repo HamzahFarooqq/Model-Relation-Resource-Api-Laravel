@@ -13,32 +13,29 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $appends = ['registered'];
+
+
+
+
+
+   
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
+
+
+   
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -59,6 +56,17 @@ class User extends Authenticatable
     // }
 
 
+
+    
+        public function getRegisteredAttribute()
+        {
+            return $this->created_at->diffForHumans();
+        }
+
+
+
+
+
     // ONE TO ONE 
     public function phone()
     {
@@ -68,6 +76,12 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+    }
+
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
 }

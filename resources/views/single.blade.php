@@ -8,9 +8,9 @@
 
 
 
-{{$myhobby}}
+{{-- {{$myhobby}} --}}
 
 
-<body>
+{{-- <body>
     <p>hello friend and fans, my hobby is {{$myhobby}}</p>
-</body>
+</body> --}}

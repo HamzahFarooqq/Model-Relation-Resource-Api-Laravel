@@ -20,11 +20,15 @@ use App\Http\Controllers\CommentController;
 
 
 
+Route::get('test/home', function() {
+
+    return view('single');
+
+});
 
 
 
-
-
+// require __DIR__.'/test_route.php';
 // require __DIR__.'/auth.php';
 
 
